@@ -7,12 +7,20 @@
       #gameScreen {
         border: 1px solid black;
       }
+
+      img {
+        display: none;
+      }
     </style>
   </head>
 
   <body>
-    <canvas id="gameScreen" width="400" height="300"></canvas>
+    <img id="img_ball" src="assets/images/basketball-ball.png" />
+    <img id="img_brick" src="assets/images/brick.png" />
 
+    <canvas id="gameScreen" width="400" height="300"></canvas>
+    <h5 id="x"></h5>
+    <h5 id="y"></h5>
     <script src="/src/index.js"></script>
   </body>
 </html>
