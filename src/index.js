@@ -8,7 +8,7 @@ const GAME_WIDTH = canvas.offsetWidth;
 const GAME_HEIGHT = canvas.offsetHeight;
 
 let game = new Game(GAME_WIDTH, GAME_HEIGHT);
-game.start();
+//game.start();
 
 let lastTime = 0;
 function gameLoop(timeStamp) {
