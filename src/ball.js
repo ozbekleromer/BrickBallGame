@@ -1,3 +1,5 @@
+import { detectCollision } from "/src/collisionDetection";
+
 export default class Ball {
   constructor(game) {
     this.image = document.getElementById("img_ball");
@@ -7,8 +9,8 @@ export default class Ball {
 
     this.game = game;
 
-    this.position = { x: 10, y: 10 };
-    this.speed = { x: 2, y: 2 };
+    this.position = { x: 10, y: 200 };
+    this.speed = { x: 2, y: -1 };
     this.size = this.gameWidth / 35;
   }
 
@@ -39,32 +41,8 @@ export default class Ball {
       this.speed.y = -this.speed.y;
     }
 
-    //check colision with paddle
-    let topOfBall = this.position.y;
-    let bottomOfBall = this.position.y + this.size;
-    let leftSideOfBall = this.position.x;
-    let rightSideOfBall = this.position.x + this.size;
-    let topOfPaddle = this.game.paddle.position.y;
-    let bottomOfPaddle = this.game.paddle.position.y + this.game.paddle.height;
-    let leftSideOfPaddle = this.game.paddle.position.x;
-    let rightSideOfPaddle =
-      this.game.paddle.position.x + this.game.paddle.width;
-
-    if (
-      //check colision with left or right side of paddle
-      bottomOfBall > topOfPaddle &&
-      ((leftSideOfBall < leftSideOfPaddle &&
-        rightSideOfBall > leftSideOfPaddle) ||
-        (leftSideOfBall < rightSideOfPaddle &&
-          rightSideOfBall > rightSideOfPaddle))
-    ) {
-      this.speed.x = -this.speed.x;
-    } else if (
-      //check colision with top of paddle
-      bottomOfBall > topOfPaddle &&
-      leftSideOfBall < rightSideOfPaddle &&
-      rightSideOfBall > leftSideOfPaddle
-    ) {
+    //check colision with left or right side of paddle
+    if (detectCollision(this, this.game.paddle)) {
       this.speed.y = -this.speed.y;
     }
   }
