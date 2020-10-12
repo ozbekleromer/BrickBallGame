@@ -42,6 +42,8 @@ export default class Game {
     this.ball.reset();
 
     this.gameState = GAMESTATE.RUNNING;
+
+    document.getElementById("lives").innerHTML = "Lives: " + this.lives;
   }
 
   draw(ctx) {

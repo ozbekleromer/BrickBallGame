@@ -32,9 +32,6 @@ export default class Ball {
     this.position.x += this.speed.x;
     this.position.y += this.speed.y;
 
-    document.getElementById("x").innerHTML = this.position.x;
-    document.getElementById("y").innerHTML = this.position.y;
-
     //wall on left or right
     if (this.position.x < 0 || this.position.x > this.gameWidth - this.size) {
       this.speed.x = -this.speed.x;
@@ -48,6 +45,7 @@ export default class Ball {
     //wall on bottom
     if (this.position.y > this.gameHeight - this.size) {
       this.game.lives--;
+      document.getElementById("lives").innerHTML = "Lives: " + this.game.lives;
       this.reset();
     }
 
